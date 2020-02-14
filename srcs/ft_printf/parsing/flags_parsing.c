@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   flags_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 13:02:52 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static e_state get_all_flags(t_context *ctx, int prev_i);
+static e_printf_state get_all_flags(t_printf_context *ctx, int prev_i);
 
-e_state get_flags(t_context *ctx)
+e_printf_state get_flags(t_printf_context *ctx)
 {
 	if (ctx->input[ctx->in_i] == '%')
 	{
@@ -24,7 +24,7 @@ e_state get_flags(t_context *ctx)
 	return get_all_flags(ctx, -1);
 }
 
-static e_state get_all_flags(t_context *ctx, int prev_i)
+static e_printf_state get_all_flags(t_printf_context *ctx, int prev_i)
 {
 	while (prev_i == -1 || prev_i != ctx->in_i)
 	{

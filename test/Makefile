@@ -2,7 +2,7 @@ all: main
 
 main : main_test.c
 	make -C ../
-	gcc -o main main_test.c -I.. -L.. -lftprintf -g
+	gcc -o main main_test.c -I.. -L.. -lft -g
 
 clean :
 	rm -rf main

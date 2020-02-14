@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   convert_double.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:33 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static char		*longdoubletochar(t_context *ctx, long double nbr);
-static char		*special_double_value(t_context *ctx, char *str,\
+static char		*longdoubletochar(t_printf_context *ctx, long double nbr);
+static char		*special_double_value(t_printf_context *ctx, char *str,\
 					long double nbr);
-static size_t	double_length(t_context *ctx, long double nbr);
+static size_t	double_length(t_printf_context *ctx, long double nbr);
 static char     *fill_decimal_part(char *str, long double nbr,\
 					int i, int length);
 
-e_state 	convert_double(t_context *ctx)
+e_printf_state 	convert_double(t_printf_context *ctx)
 {
 	long double	nbr;
 	char 		*str;
-	e_state		ret;
+	e_printf_state		ret;
 
 	if (ctx->modifier == m_L)
 		nbr = (long double)va_arg(*(ctx->list), long double);
@@ -36,7 +36,7 @@ e_state 	convert_double(t_context *ctx)
 	return ret;
 }
 
-static char	*longdoubletochar(t_context *ctx, long double nbr)
+static char	*longdoubletochar(t_printf_context *ctx, long double nbr)
 {
 	char	*ret;
 	int		i;
@@ -62,7 +62,7 @@ static char	*longdoubletochar(t_context *ctx, long double nbr)
 	}
 }
 
-static char *special_double_value(t_context *ctx, char *str, long double nbr)
+static char *special_double_value(t_printf_context *ctx, char *str, long double nbr)
 {
 	if (ctx->convertion == c_lowdouble)
 	{
@@ -85,7 +85,7 @@ static char *special_double_value(t_context *ctx, char *str, long double nbr)
 	return str;
 }
 
-static size_t double_length(t_context *ctx, long double nbr)
+static size_t double_length(t_printf_context *ctx, long double nbr)
 {
 	size_t size;
 

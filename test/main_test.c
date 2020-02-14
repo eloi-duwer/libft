@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:32:55 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:30:25 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 13:17:15 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
 #include "../include/libftprintf.h"
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <math.h>
 #include <wchar.h>
@@ -42,79 +43,89 @@ int		main(int argc, char **argv)
 	// printf("%.10d\n", -42);
 	// printf("%20.10d\n", -42);
 	// printf("%zd, %zd, %zd\n", sizeof(int), sizeof(short), sizeof(short int));
-	 int ret1;
-	 int ret2;
-	// COMP_TEST("%f\n", 1.23);
-	// COMP_TEST("%.2f\n", 3.141592654);
-	// COMP_TEST("%f\n", 42.0);
-	// COMP_TEST("%f\n", 123.456);
-	// COMP_TEST("%f\n", 0.4242);
-	// COMP_TEST("%f\n", 0.1 + 0.2);
+	
+	char *ptr1;
+	char *ptr2;
+	int ret1 = asprintf(&ptr1, "coucou");
+	int ret2 = ft_asprintf(&ptr2, "coucou");
+	printf("strings: %s %s\n", ptr1, ptr2);
+	printf("Lengths: %d %d\n", ret1, ret2);
 
-	float grandNbr = 123456789012345678901234567890123456.0f;
-	unsigned long long faux = (unsigned long long) grandNbr;
-	COMP_TEST("Grand nombre: %f\n", grandNbr);
-
-//	COMP_TEST("%f\n", INFINITY);
-//	COMP_TEST("%f\n", -INFINITY);
-//	COMP_TEST("%F\n", INFINITY);
-//	COMP_TEST("%20.10F\n", -INFINITY);
-//	COMP_TEST("A que coucou %s\n", "bob");
-//	COMP_TEST("%.5d\n", 42);
-//	COMP_TEST("%.5ld\n", (long)42);
-//	COMP_TEST("%.5d\n", -42);
-	// COMP_TEST("%hhd\n", 'a');
-	// COMP_TEST("%+d\n", 42);
-	// COMP_TEST("% d\n", 42);
-	// COMP_TEST("% +d\n", 42);
-	// COMP_TEST("% +d\n", 42);
-	// COMP_TEST("|%10.5d|\n", -12);
-	// COMP_TEST("|%10d|\n", -12);
-	// COMP_TEST("|%010d|\n", -12);
-	// COMP_TEST("|%-10.5d|\n", -12);
-	// COMP_TEST("|%-010.5d|\n", -12);
-	// COMP_TEST("|%u|\n", (unsigned int)3147483642);
-	// COMP_TEST("|%.hhu|\n", (unsigned char)'é');
-	// COMP_TEST("|%llu|\n", (unsigned long long int)18446744073709551615);
-	// COMP_TEST("|%10.5u|\n", (unsigned int)3147483642);
-	// COMP_TEST("|%100.50u|\n", (unsigned int)3147483642);
-	// COMP_TEST("|%o|\n", 0123);
-	// COMP_TEST("|%llx|\n", (unsigned long long int)0xabc123);
-	// COMP_TEST("|%llx|\n", (unsigned long long int)0x321bca);
-	// COMP_TEST("|%#o|\n", 042);
-	// COMP_TEST("|%#15.10X|\n", 0x42ab);
-	// COMP_TEST("|%+.0d|\n", 0);
-	// COMP_TEST("|%+10.0d|\n", 0);
-	// COMP_TEST("|% 10.0d|\n", 0);
-	// COMP_TEST("|%- 10.0d|\n", 0);
-	// COMP_TEST("|%015.10d|\n", 42);
-	// COMP_TEST("|%-20p|\n", &ret1);
-	// COMP_TEST("|%-20lX|\n", 0xcc42fedcbabcdef);
-	// COMP_TEST("|%20c|\n", 'a');
-	// COMP_TEST("|%-20c|\n", '\172');
-	// COMP_TEST("|%-20c|\n", '\311'); // é mais ca marche pas
-	// COMP_TEST("|%30.5s|\n", "a que cc bob é á ö Ó");
-	// COMP_TEST("|%30s|\n", "accents: é á ö Ó Â ý ñ Ñ Ỳ");
-	// COMP_TEST("%s, %d\n", "test de 2 args", 42);
-	// int ret;
-	// printf("4567 |%-10]5d| plip\n", 12);
-	// printf("4567 |%10]5d| plip\n", 12);
-	// printf("a%%bc%defhij\n", 25);
-	// ret = printf ("%s\n", "ζ");
-	// write (1, "Щ\n", 3);
-	// printf("%x %#x\n", 0x123, 0x123);
-	// printf("%ll010d\n", 42);
-	// if (argc >= 2) {
-	// 	ret = ft_printf("%s\n", argv[1]);
-	// 	printf("%d\n", ret);
-	// }
-	// ret = ft_printf("%s %f %d WOUAOUW\n", "a que coucou", 3.14159f, 42);
-	// printf("%d\n", ret);
-	// ret = ft_printf("\033[0;31mCC\033[0m CA VA?\n");
-	// printf("%d\n", ret);
-	// printf("%f\n", (float)123);
-	// printf("%f\n", (double)123);
-	// printf("%lu, %lu", sizeof(double), sizeof(float));
+	//int ret1;
+	//int ret2;
+	//COMP_TEST("%f\n", 1.23);
+	//COMP_TEST("%.2f\n", 3.141592654);
+	//COMP_TEST("%f\n", 42.0);
+	//COMP_TEST("%f\n", 123.456);
+	//COMP_TEST("%f\n", 0.4242);
+	//COMP_TEST("%f\n", 0.1 + 0.2);
+//
+	//float grandNbr = 123456789012345678901234567890123456.0f;
+	//unsigned long long faux = (unsigned long long) grandNbr;
+	//COMP_TEST("Grand nombre: %f\n", grandNbr);
+//
+	//COMP_TEST("Vide", NULL);
+//
+	//COMP_TEST("%f\n", INFINITY);
+	//COMP_TEST("%f\n", -INFINITY);
+	//COMP_TEST("%F\n", INFINITY);
+	//COMP_TEST("%20.10F\n", -INFINITY);
+	//COMP_TEST("A que coucou %s\n", "bob");
+	//COMP_TEST("%.5d\n", 42);
+	//COMP_TEST("%.5ld\n", (long)42);
+	//COMP_TEST("%.5d\n", -42);
+	//COMP_TEST("%hhd\n", 'a');
+	//COMP_TEST("%+d\n", 42);
+	//COMP_TEST("% d\n", 42);
+	//COMP_TEST("% +d\n", 42);
+	//COMP_TEST("% +d\n", 42);
+	//COMP_TEST("|%10.5d|\n", -12);
+	//COMP_TEST("|%10d|\n", -12);
+	//COMP_TEST("|%010d|\n", -12);
+	//COMP_TEST("|%-10.5d|\n", -12);
+	//COMP_TEST("|%-010.5d|\n", -12);
+	//COMP_TEST("|%u|\n", (unsigned int)3147483642);
+	//COMP_TEST("|%.hhu|\n", (unsigned char)'é');
+	//COMP_TEST("|%llu|\n", (unsigned long long int)18446744073709551615);
+	//COMP_TEST("|%10.5u|\n", (unsigned int)3147483642);
+	//COMP_TEST("|%100.50u|\n", (unsigned int)3147483642);
+	//COMP_TEST("|%o|\n", 0123);
+	//COMP_TEST("|%llx|\n", (unsigned long long int)0xabc123);
+	//COMP_TEST("|%llx|\n", (unsigned long long int)0x321bca);
+	//COMP_TEST("|%#o|\n", 042);
+	//COMP_TEST("|%#15.10X|\n", 0x42ab);
+	//COMP_TEST("|%+.0d|\n", 0);
+	//COMP_TEST("|%+10.0d|\n", 0);
+	//COMP_TEST("|% 10.0d|\n", 0);
+	//COMP_TEST("|%- 10.0d|\n", 0);
+	//COMP_TEST("|%015.10d|\n", 42);
+	//COMP_TEST("|%-20p|\n", &ret1);
+	//COMP_TEST("|%-20lX|\n", 0xcc42fedcbabcdef);
+	//COMP_TEST("|%20c|\n", 'a');
+	//COMP_TEST("|%-20c|\n", '\172');
+	//COMP_TEST("|%-20c|\n", '\311'); // é mais ca marche pas
+	//COMP_TEST("|%30.5s|\n", "a que cc bob é á ö Ó");
+	//COMP_TEST("|%30s|\n", "accents: é á ö Ó Â ý ñ Ñ Ỳ");
+	//COMP_TEST("%s, %d\n", "test de 2 args", 42);
+	//int ret;
+	//printf("4567 |%-10]5d| plip\n", 12);
+	//printf("4567 |%10]5d| plip\n", 12);
+	//printf("a%%bc%defhij\n", 25);
+	//ret = printf ("%s\n", "ζ");
+	//write (1, "Щ\n", 3);
+	//printf("%x %#x\n", 0x123, 0x123);
+	//printf("%ll010d\n", 42);
+	//if (argc >= 2) {
+	//	ret = ft_printf("%s\n", argv[1]);
+	//	printf("%d\n", ret);
+	//}
+	//ret = ft_printf("%s %f %d WOUAOUW\n", "a que coucou", 3.14159f, 42);
+	//printf("%d\n", ret);
+	//ret = ft_printf("\033[0;31mCC\033[0m CA VA?\n");
+	//printf("%d\n", ret);
+	//printf("%f\n", (float)123);
+	//printf("%f\n", (double)123);
+	//printf("%lu, %lu", sizeof(double), sizeof(float));
 	//tests_from_curqui();
 
 	return (0);

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_convertion.c                       :+:      :+:    :+:   */
+/*   get_convertion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 13:02:57 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static e_state get_other_convertions(t_context *ctx);
-static e_state print_plain_percent(t_context *ctx);
+static e_printf_state get_other_convertions(t_printf_context *ctx);
+static e_printf_state print_plain_percent(t_printf_context *ctx);
 
-e_state get_convertion(t_context *ctx)
+e_printf_state get_convertion(t_printf_context *ctx)
 {
 	if (ctx->input[ctx->in_i] == 'i' || ctx->input[ctx->in_i] == 'd')
 		ctx->convertion = c_int;
@@ -36,7 +36,7 @@ e_state get_convertion(t_context *ctx)
 	return make_ze_convertion(ctx);
 }
 
-static e_state get_other_convertions(t_context *ctx)
+static e_printf_state get_other_convertions(t_printf_context *ctx)
 {
 	if (ctx->input[ctx->in_i] == 'x')
 		ctx->convertion = c_uhexlowcase;
@@ -55,7 +55,7 @@ static e_state get_other_convertions(t_context *ctx)
 	return true;
 }
 
-static e_state print_plain_percent(t_context *ctx)
+static e_printf_state print_plain_percent(t_printf_context *ctx)
 {
 	int prev_percent;
 

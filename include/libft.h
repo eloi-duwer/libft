@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 13:47:08 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/12 15:38:13 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 13:07:19 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					ft_printf(const char *restrict str, ...);
+int					ft_sprintf(char *str, const char *restrict format, ...);
+int					ft_snprintf(char *str, size_t size, \
+						const char *restrict format, ...);
+int					ft_asprintf(char **pstr, const char *restrict format, ...);
 int					ft_atoi(const char *str);
 int					ft_bzero(void *s, size_t n);
 int					ft_isalnum(int c);
@@ -46,7 +51,7 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strnstr(const char *big, const char *little, \
-					size_t len);
+						size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *big, const char *little);
 int					ft_tolower(int c);

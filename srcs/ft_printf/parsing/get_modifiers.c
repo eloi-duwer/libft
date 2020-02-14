@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_modifiers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:36 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static e_state test_l_ll_h_hh(t_context *ctx);
+static e_printf_state test_l_ll_h_hh(t_printf_context *ctx);
 
-e_state get_modifiers(t_context *ctx)
+e_printf_state get_modifiers(t_printf_context *ctx)
 {
 	if (ctx->input[ctx->in_i] == 'q')
 		ctx->modifier = m_q;
@@ -35,7 +35,7 @@ e_state get_modifiers(t_context *ctx)
 	return get_convertion(ctx);
 }
 
-static e_state test_l_ll_h_hh(t_context *ctx)
+static e_printf_state test_l_ll_h_hh(t_printf_context *ctx)
 {
 	if (ctx->input[ctx->in_i] == 'h')
 	{

@@ -6,13 +6,14 @@
 #    By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/22 16:26:19 by eduwer            #+#    #+#              #
-#    Updated: 2020/02/14 11:59:58 by eduwer           ###   ########.fr        #
+#    Updated: 2020/02/14 12:22:02 by eduwer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = append_string.c \
 	context_control.c \
-	ft_printf.c \
+	main_functions.c \
+	exposed_functions.c \
 	double_utils.c \
 	parsing/flags_parsing.c \
 	parsing/get_convertion.c \

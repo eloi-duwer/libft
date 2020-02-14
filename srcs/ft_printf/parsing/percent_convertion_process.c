@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   percent_convertion_process.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:37 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-e_state begin_percent_process(t_context *ctx)
+e_printf_state begin_percent_process(t_printf_context *ctx)
 {
 	ctx->in_i++;
 	reset_flags(ctx);
 	return get_flags(ctx);
 }
 
-e_state make_ze_convertion(t_context *ctx)
+e_printf_state make_ze_convertion(t_printf_context *ctx)
 {
 	if (ctx->convertion == c_string)
 		return convert_string(ctx);

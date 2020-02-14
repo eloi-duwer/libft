@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   field_width.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:30 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static char *add_spaces(char *str, int length, int field_width);
 static char *flag_minus(char *str, int length, int field_width);
-static char *flag_zero(t_context *ctx, char *str, int length);
+static char *flag_zero(t_printf_context *ctx, char *str, int length);
 
-char *field_width(t_context *ctx, char *str)
+char *field_width(t_printf_context *ctx, char *str)
 {
 	int length;
 
@@ -66,7 +66,7 @@ static char *flag_minus(char *str, int length, int field_width)
 	return newstr;
 }
 
-static char *flag_zero(t_context *ctx, char *str, int length)
+static char *flag_zero(t_printf_context *ctx, char *str, int length)
 {
 	return precision_and_zero_padding(str, ctx->field_width - length);
 }

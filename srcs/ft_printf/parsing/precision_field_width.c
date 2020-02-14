@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   precision_field_width.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:37 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-e_state get_field_width(t_context *ctx)
+e_printf_state get_field_width(t_printf_context *ctx)
 {
 	if (ft_isdigit(ctx->input[ctx->in_i]) == 1)
 	{
@@ -24,7 +24,7 @@ e_state get_field_width(t_context *ctx)
 	return get_precision(ctx);
 }
 
-e_state get_precision(t_context *ctx)
+e_printf_state get_precision(t_printf_context *ctx)
 {
 	if(ctx->input[ctx->in_i] == '.')
 	{

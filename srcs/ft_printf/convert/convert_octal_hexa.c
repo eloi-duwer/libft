@@ -6,17 +6,17 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2020/02/14 11:58:27 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:31 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-static char 	*itoa_base_args_conv(t_context *ctx, uintmax_t nbr);
-static e_state 	convert_oct_hexa_print(t_context *ctx, char *str);
-char			*flag_hashtag_oct_hex(t_context *ctx, char *str);
+static char 	*itoa_base_args_conv(t_printf_context *ctx, uintmax_t nbr);
+static e_printf_state 	convert_oct_hexa_print(t_printf_context *ctx, char *str);
+char			*flag_hashtag_oct_hex(t_printf_context *ctx, char *str);
 
-e_state		convert_octal_hexa(t_context *ctx)
+e_printf_state		convert_octal_hexa(t_printf_context *ctx)
 {
 	uintmax_t nbr;
 	char	*str;
@@ -45,7 +45,7 @@ e_state		convert_octal_hexa(t_context *ctx)
 	return convert_oct_hexa_print(ctx, str);
 }
 
-static char *itoa_base_args_conv(t_context *ctx, uintmax_t nbr)
+static char *itoa_base_args_conv(t_printf_context *ctx, uintmax_t nbr)
 {
 	int lowercase;
 	int base;
@@ -68,9 +68,9 @@ static char *itoa_base_args_conv(t_context *ctx, uintmax_t nbr)
 	return ft_itoa_base_uintmax(nbr, base, lowercase);
 }
 
-e_state convert_oct_hexa_print(t_context *ctx, char *str)
+e_printf_state convert_oct_hexa_print(t_printf_context *ctx, char *str)
 {
-	e_state ret;
+	e_printf_state ret;
 
 	if (ctx->precision != -1 && (str = fill_to_precision_int(ctx, str)) == NULL)
 		return error;
@@ -84,7 +84,7 @@ e_state convert_oct_hexa_print(t_context *ctx, char *str)
 	return ret;
 }
 
-char	*flag_hashtag_oct_hex(t_context *ctx, char *str)
+char	*flag_hashtag_oct_hex(t_printf_context *ctx, char *str)
 {
 	char	*newstr;
 	int		size;

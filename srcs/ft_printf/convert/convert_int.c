@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:32 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 **	les types plus petits sont castés en int
 */
 
-static e_state convert_int_print(t_context *ctx, char *str);
+static e_printf_state convert_int_print(t_printf_context *ctx, char *str);
 
-e_state convert_int(t_context *ctx)
+e_printf_state convert_int(t_printf_context *ctx)
 {
 	intmax_t nbr;
 	char	*str;
@@ -46,9 +46,9 @@ e_state convert_int(t_context *ctx)
 	return convert_int_print(ctx, str);
 }
 
-static e_state convert_int_print(t_context *ctx, char *str)
+static e_printf_state convert_int_print(t_printf_context *ctx, char *str)
 {
-	e_state ret;
+	e_printf_state ret;
 
 	if (ctx->precision != -1 && (str = fill_to_precision_int(ctx, str)) == NULL)
 		return error;
@@ -61,7 +61,7 @@ static e_state convert_int_print(t_context *ctx, char *str)
 	return ret;
 }
 
-char	*fill_to_precision_int(t_context *ctx, char *str)
+char	*fill_to_precision_int(t_printf_context *ctx, char *str)
 {
 	int length;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   context_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:39 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-void	init_context(t_context *ctx, const char *restrict input, va_list *list)
+void	init_printf_context(t_printf_context *ctx, const char *restrict input, va_list *list)
 {
 	ctx->nb_printed = 0;
 	ctx->in_i = 0;
@@ -23,7 +23,7 @@ void	init_context(t_context *ctx, const char *restrict input, va_list *list)
 	ctx->list = list;
 }
 
-void	reset_flags(t_context *ctx)
+void	reset_flags(t_printf_context *ctx)
 {
 	ctx->field_width = -1;
 	ctx->precision = -1;
@@ -32,7 +32,7 @@ void	reset_flags(t_context *ctx)
 	ctx->flags = 0;
 }
 
-e_state	expand_string(t_context *ctx, size_t size)
+e_printf_state	expand_string(t_printf_context *ctx, size_t size)
 {
 	char	*mem;
 	size_t	to_add;

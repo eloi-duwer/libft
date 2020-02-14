@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   convert_string.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:31 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-//static e_state convert_string_wchart(t_context *ctx);
+//static e_printf_state convert_string_wchart(t_printf_context *ctx);
 
-e_state convert_string(t_context *ctx)
+e_printf_state convert_string(t_printf_context *ctx)
 {
 	const char	*str;
 	char		*strwidth;
-	e_state		ret;
+	e_printf_state		ret;
 
 	//if(ctx->modifier == m_l)
 	//	return convert_string_wchart(ctx);
@@ -35,7 +35,7 @@ e_state convert_string(t_context *ctx)
 	return ret;
 }
 /*
-static e_state convert_string_wchart(t_context *ctx)
+static e_printf_state convert_string_wchart(t_printf_context *ctx)
 {
 	return true;
 }

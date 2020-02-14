@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   convert_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:34 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-e_state		convert_char(t_context *ctx)
+e_printf_state		convert_char(t_printf_context *ctx)
 {
 	unsigned char c;
 	unsigned char *str;
-	e_state ret;
+	e_printf_state ret;
 
 	c = (unsigned char)va_arg(*(ctx->list), int);
 	if ((str = (unsigned char *)ft_memalloc(sizeof(char) * 2)) == NULL)

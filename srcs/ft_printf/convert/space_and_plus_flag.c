@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   space_and_plus_flag.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:31:44 by eduwer            #+#    #+#             */
-/*   Updated: 2017/05/22 19:20:42 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/14 12:46:29 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*plus_flag(char *str);
 static char	*space_flag(char *str);
 
-char	*space_and_plus_flag(t_context *ctx, char *str)
+char	*space_and_plus_flag(t_printf_context *ctx, char *str)
 {
 	if (ctx->flags & FLAG_PLUS)
 		return plus_flag(str);

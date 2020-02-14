@@ -21,7 +21,7 @@
 **	les types plus petits sont castés en int
 */
 
-e_state convert_uint(t_context *ctx)
+e_printf_state convert_uint(t_printf_context *ctx)
 {
 	intmax_t nbr;
 	char	*str;
@@ -45,9 +45,9 @@ e_state convert_uint(t_context *ctx)
 	return convert_uint_print(ctx, str);
 }
 
-e_state convert_uint_print(t_context *ctx, char *str)
+e_printf_state convert_uint_print(t_printf_context *ctx, char *str)
 {
-	e_state ret;
+	e_printf_state ret;
 
 	if (ctx->precision != -1 && (str = fill_to_precision_int(ctx, str)) == NULL)
 		return error;
