@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char_to_unsigned.c                              :+:      :+:    :+:   */
+/*   ft_reverse_string.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 16:53:27 by eduwer            #+#    #+#             */
-/*   Updated: 2020/02/28 22:29:16 by eduwer           ###   ########.fr       */
+/*   Created: 2020/02/17 23:35:14 by eduwer            #+#    #+#             */
+/*   Updated: 2020/02/17 23:39:45 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-unsigned char	*ft_char_to_unsigned(char *str)
+void	ft_reverse_string(unsigned char *str, size_t length)
 {
-	unsigned char	*ret;
-	size_t			i;
-	size_t			length;
+	size_t	i;
+	char	mem;
 
-	length = ft_strlen(str);
-	ret = (unsigned char *)ft_memalloc(sizeof(char) * (length + 1));
-	if (!ret)
-		return (NULL);
 	i = 0;
-	while (i < length)
+	while (i < length / 2)
 	{
-		ret[i] = (unsigned char)str[i];
+		mem = str[i];
+		str[i] = str[length - 1 - i];
+		str[length - 1 - i] = mem;
 		++i;
 	}
-	return (ret);
 }

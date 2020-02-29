@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:32:55 by eduwer            #+#    #+#             */
-/*   Updated: 2020/02/14 13:17:15 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/02/29 14:10:12 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #pragma GCC diagnostic ignored "-Wformat-extra-args"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
+#include "../include/libft.h"
 #include "../include/libftprintf.h"
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <math.h>
 #include <wchar.h>
 #include <wctype.h>
+#include <fcntl.h>
 
 #define COMP_TEST(str, ...) do { \
 	write(1, "Testing the string: ", 20); \
@@ -34,6 +36,12 @@ void tests_from_curqui();
 
 int		main(int argc, char **argv)
 {
+	int fd = open("./Makefile", O_RDONLY);
+	char *ptr;
+	size_t size;
+
+	int ret = read_whole_file(fd, (void **)&ptr, &size);
+	printf("%d %s\n", ret, ptr);
 	// printf(argv[1], 42);
 	// printf("\n");
 	// printf(argv[1], -42);
@@ -44,12 +52,12 @@ int		main(int argc, char **argv)
 	// printf("%20.10d\n", -42);
 	// printf("%zd, %zd, %zd\n", sizeof(int), sizeof(short), sizeof(short int));
 	
-	char *ptr1;
-	char *ptr2;
-	int ret1 = asprintf(&ptr1, "coucou");
-	int ret2 = ft_asprintf(&ptr2, "coucou");
-	printf("strings: %s %s\n", ptr1, ptr2);
-	printf("Lengths: %d %d\n", ret1, ret2);
+	//char *ptr1;
+	//char *ptr2;
+	//int ret1 = asprintf(&ptr1, "coucou");
+	//int ret2 = ft_asprintf(&ptr2, "coucou");
+	//printf("strings: %s %s\n", ptr1, ptr2);
+	//printf("Lengths: %d %d\n", ret1, ret2);
 
 	//int ret1;
 	//int ret2;
