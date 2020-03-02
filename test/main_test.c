@@ -6,13 +6,9 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:32:55 by eduwer            #+#    #+#             */
-/*   Updated: 2020/02/29 14:10:12 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/03/02 22:02:22 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic ignored "-Wformat="
-#pragma GCC diagnostic ignored "-Wformat-extra-args"
-#pragma GCC diagnostic ignored "-Wunused-parameter"
 
 #include "../include/libft.h"
 #include "../include/libftprintf.h"
@@ -40,8 +36,8 @@ int		main(int argc, char **argv)
 	char *ptr;
 	size_t size;
 
-	int ret = read_whole_file(fd, (void **)&ptr, &size);
-	printf("%d %s\n", ret, ptr);
+	//int ret = read_whole_file(fd, (void **)&ptr, &size);
+	//printf("%d %s\n", ret, ptr);
 	// printf(argv[1], 42);
 	// printf("\n");
 	// printf(argv[1], -42);
@@ -59,8 +55,16 @@ int		main(int argc, char **argv)
 	//printf("strings: %s %s\n", ptr1, ptr2);
 	//printf("Lengths: %d %d\n", ret1, ret2);
 
-	//int ret1;
-	//int ret2;
+	int ret1;
+	int ret2;
+	COMP_TEST("%010x\n", 0x0e0e);
+	COMP_TEST("%010d\n", -42);
+	COMP_TEST("%010d\n", 42);
+	COMP_TEST("%010f\n", 0.123f);
+	COMP_TEST("%010s\n", "test");
+	COMP_TEST("%+10.5d\n", 42);
+	COMP_TEST("%+10.5d\n", -42);
+	COMP_TEST("%#15.10x\n", 0x0e0e);
 	//COMP_TEST("%f\n", 1.23);
 	//COMP_TEST("%.2f\n", 3.141592654);
 	//COMP_TEST("%f\n", 42.0);
@@ -85,7 +89,7 @@ int		main(int argc, char **argv)
 	//COMP_TEST("%hhd\n", 'a');
 	//COMP_TEST("%+d\n", 42);
 	//COMP_TEST("% d\n", 42);
-	//COMP_TEST("% +d\n", 42);
+//COMP_TEST("% +d\n", 42);
 	//COMP_TEST("% +d\n", 42);
 	//COMP_TEST("|%10.5d|\n", -12);
 	//COMP_TEST("|%10d|\n", -12);
