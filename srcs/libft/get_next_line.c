@@ -34,7 +34,7 @@ int				size_to_add(char *line)
 	int i;
 
 	i = 0;
-	while (line[i] != '\n' && line[i] != '\0')
+	while (line[i] != '\n' && line[i] != '\0' && ft_strncmp(&line[i], "\r\n", 2) != 0)
 		i++;
 	return (i);
 }
@@ -46,13 +46,13 @@ int				ft_empty_the_buffer(char **line, char **pt_buff, int i)
 	if (remalloc_the_line(line, size_to_add(*pt_buff)) == -1)
 		return (-1);
 	j = 0;
-	while ((*pt_buff)[j] != '\n' && (*pt_buff)[j] != '\0')
+	while ((*pt_buff)[j] != '\n' && (*pt_buff)[j] != '\0' && ft_strncmp(&(*pt_buff)[j], "\r\n", 2) != 0)
 	{
 		(*line)[i] = (*pt_buff)[j];
 		i++;
 		j++;
 	}
-	if ((*pt_buff)[j] == '\n')
+	if ((*pt_buff)[j] == '\n' || ft_strncmp(&(*pt_buff)[j], "\r\n", 2) == 0)
 	{
 		j++;
 		*pt_buff = &((*pt_buff)[j]);
