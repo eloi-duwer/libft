@@ -12,11 +12,11 @@
 
 #include <libftprintf.h>
 
-static t_printf_state	convert_string_wchart(t_printf_context *ctx)
+/*static t_printf_state	convert_string_wchart(t_printf_context *ctx)
 {
 	ctx = NULL;
 	return (error);
-}
+}*/
 
 t_printf_state			convert_string(t_printf_context *ctx)
 {
@@ -25,7 +25,7 @@ t_printf_state			convert_string(t_printf_context *ctx)
 	t_printf_state	ret;
 
 	if (ctx->modifier == m_l)
-		return (convert_string_wchart(ctx));
+		return (/*convert_string_wchart(ctx)*/error);
 	str = va_arg(*(ctx->list), const char *);
 	if (ctx->precision == -1)
 		ctx->precision = ft_strlen(str);

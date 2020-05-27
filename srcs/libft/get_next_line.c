@@ -34,31 +34,33 @@ int				size_to_add(char *line)
 	int i;
 
 	i = 0;
-	while (line[i] != '\n' && line[i] != '\0' && ft_strncmp(&line[i], "\r\n", 2) != 0)
+	while (line[i] != '\n' && line[i] != '\0')
 		i++;
 	return (i);
 }
 
-int				ft_empty_the_buffer(char **line, char **pt_buff, int i)
+int				ft_empty_the_buffer(char **line, char **cursor, int i)
 {
 	int j;
 
-	if (remalloc_the_line(line, size_to_add(*pt_buff)) == -1)
+	if (remalloc_the_line(line, size_to_add(*cursor)) == -1)
 		return (-1);
 	j = 0;
-	while ((*pt_buff)[j] != '\n' && (*pt_buff)[j] != '\0' && ft_strncmp(&(*pt_buff)[j], "\r\n", 2) != 0)
+	while ((*cursor)[j] != '\n' && (*cursor)[j] != '\0')
 	{
-		(*line)[i] = (*pt_buff)[j];
+		(*line)[i] = (*cursor)[j];
 		i++;
 		j++;
 	}
-	if ((*pt_buff)[j] == '\n' || ft_strncmp(&(*pt_buff)[j], "\r\n", 2) == 0)
+	if ((*cursor)[j] == '\n')
 	{
+		if (i > 0 && (*line)[i - 1] == '\r')
+			(*line)[i - 1] = '\0';
 		j++;
-		*pt_buff = &((*pt_buff)[j]);
+		*cursor = &((*cursor)[j]);
 		return (1);
 	}
-	**pt_buff = '\0';
+	**cursor = '\0';
 	return (0);
 }
 
@@ -76,27 +78,27 @@ int				ft_check(int ret, char **line)
 int				get_next_line(const int fd, char **line)
 {
 	static char stat_buff[BUFF_SIZE] = {'\0'};
-	static char *pt_buff = NULL;
+	static char *cursor = NULL;
 	int			ret;
 
-	if (pt_buff == NULL)
-		pt_buff = stat_buff;
+	if (cursor == NULL)
+		cursor = stat_buff;
 	if (line == NULL || fd < 0)
 		return (-1);
 	if ((*line = (char *)malloc(1)) == NULL)
 		return (-1);
 	(*line)[0] = '\0';
-	if (*pt_buff != '\0' && \
-		(ret = ft_empty_the_buffer(line, &pt_buff, 0)) != 0)
+	if (*cursor != '\0' && \
+		(ret = ft_empty_the_buffer(line, &cursor, 0)) != 0)
 		return (ret);
 	while (1)
 	{
 		ft_memset(stat_buff, 0, BUFF_SIZE);
-		pt_buff = stat_buff;
+		cursor = stat_buff;
 		ret = read(fd, stat_buff, BUFF_SIZE);
 		if (ft_check(ret, line) != 2)
 			return (ft_check(ret, line));
-		if ((ret = ft_empty_the_buffer(line, &pt_buff, ft_strlen(*line))) != 0)
+		if ((ret = ft_empty_the_buffer(line, &cursor, ft_strlen(*line))) != 0)
 			return (ret);
 	}
 }

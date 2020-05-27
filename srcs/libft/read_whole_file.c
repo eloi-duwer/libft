@@ -44,13 +44,13 @@ int			read_whole_file(int fd, void **ptr, size_t *size)
 	{
 		if (remalloc_the_line(&ret, &total_size, readsize) != 0)
 			return (1);
-		ft_memcpy(&ret[total_size - readsize], buff, readsize);
+		ft_memcpy(ret + total_size - readsize, buff, readsize);
 	}
 	if (readsize == -1)
 		return (1);
 	if (remalloc_the_line(&ret, &total_size, readsize) != 0)
 		return (1);
-	ft_memcpy(&ret[total_size - readsize], buff, readsize);
+	ft_memcpy(ret + total_size - readsize, buff, readsize);
 	*ptr = ret;
 	*size = total_size;
 	return (0);
