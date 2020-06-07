@@ -102,6 +102,7 @@ char				*ft_itoa_base_uintmax(uintmax_t n, unsigned int base, \
 unsigned char		*ft_char_to_unsigned(char *str);
 void				ft_reverse_string(unsigned char *str, size_t length);
 void				ft_strtoupper(char *str);
+void				ft_free_string_list(char **lst);
 int					read_whole_file(int fd, void **ptr, size_t *size);
 
 #endif
