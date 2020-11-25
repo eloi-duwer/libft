@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:56:09 by eduwer            #+#    #+#             */
-/*   Updated: 2016/11/09 17:42:14 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/11/25 16:04:35 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	ft_putstr(char const *s)
 	if (s != NULL)
 	{
 		len = ft_strlen(s);
-		write(1, s, len); 
+		write(1, s, len);
 	}
 }
