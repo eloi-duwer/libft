@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_whole_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 20:03:01 by eduwer            #+#    #+#             */
-/*   Updated: 2020/02/29 16:07:54 by eduwer           ###   ########.fr       */
+/*   Updated: 2020/12/31 18:24:53 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,30 @@ int			read_whole_file(int fd, void **ptr, size_t *size)
 	total_size = 0;
 	while (((readsize = read(fd, buff, READ_BUFF_SIZE)) == READ_BUFF_SIZE) \
 		|| (fd == 0 && readsize > 0))
+	{
+		if (remalloc_the_line(&ret, &total_size, readsize) != 0)
+			return (1);
+		ft_memcpy(ret + total_size - readsize, buff, readsize);
+	}
+	if (readsize == -1)
+		return (1);
+	if (remalloc_the_line(&ret, &total_size, readsize) != 0)
+		return (1);
+	ft_memcpy(ret + total_size - readsize, buff, readsize);
+	*ptr = ret;
+	*size = total_size;
+	return (0);
+}
+
+int			read_whole_stdin(void **ptr, size_t *size)
+{
+	int		readsize;
+	void	*ret;
+	char	buff[READ_BUFF_SIZE];
+	size_t	total_size;
+
+	total_size = 0;
+	while ((readsize = read(0, buff, READ_BUFF_SIZE)) > 0)
 	{
 		if (remalloc_the_line(&ret, &total_size, readsize) != 0)
 			return (1);
