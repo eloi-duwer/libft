@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:10:08 by eduwer            #+#    #+#             */
-/*   Updated: 2021/01/02 00:00:23 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/01/02 01:24:49 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static bool	is_hex(char c)
 
 static bool	conv_hex(uint8_t *pt_base, uint8_t *pt, int state, char c)
 {
-
 	if (!is_hex(c))
 	{
 		free(pt_base);
