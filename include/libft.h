@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 13:47:08 by eduwer            #+#    #+#             */
-/*   Updated: 2020/12/31 18:25:23 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/01/01 23:45:38 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int					ft_snprintf(char *str, size_t size, \
 int					ft_asprintf(char **pstr, const char *restrict format, ...);
 int					ft_atoi(const char *str);
 int					ft_bzero(void *s, size_t n);
+uint8_t				*ft_char_to_hex(char *str, size_t *out_size);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
