@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:10:08 by eduwer            #+#    #+#             */
-/*   Updated: 2021/01/08 03:40:28 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/01/08 04:50:28 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ static inline uint64_t	get_hex(char c)
 	return (c - 'a' + 10);
 }
 
-static inline bool		is_hex(char c)
-{
-	return ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') \
-		|| (c >= 'a' && c <= 'f'));
-}
+
 
 static uint64_t			do_conv(char *str, size_t str_len)
 {
@@ -38,9 +34,10 @@ static uint64_t			do_conv(char *str, size_t str_len)
 
 	i = 0;
 	ret = 0;
-	while (i < str_len || i < 16)
+	while (i < str_len && i < 16)
 	{
-		if (is_hex(str[i]) == false)
+		if (!((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && \
+			str[i] <= 'F') || (str[i] >= 'a' && str[i] <= 'f')))
 		{
 			write(2, "Hex string is invalid\n", 22);
 			exit(1);
@@ -65,6 +62,6 @@ uint64_t		ft_char_to_hex_u64(char *str)
 	if (len < 16)
 		write(2, "hex string is too short, padding with zeroes\n", 45);
 	else if (len > 16)
-		write(2, "hex string is too long, ignoring excess", 39);
+		write(2, "hex string is too long, ignoring excess\n", 40);
 	return (do_conv(str, len));
 }
