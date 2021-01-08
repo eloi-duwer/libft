@@ -6,58 +6,65 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:10:08 by eduwer            #+#    #+#             */
-/*   Updated: 2021/01/02 01:24:49 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/01/08 03:40:28 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-static int	get_hex(char c)
+
+static inline uint64_t	get_hex(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (c - '0');
-	return (c - 'A' + 10);
+	else if (c >= 'A' && c <= 'F')
+		return (c - 'A' + 10);
+	return (c - 'a' + 10);
 }
 
-static bool	is_hex(char c)
+static inline bool		is_hex(char c)
 {
-	return ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F'));
+	return ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') \
+		|| (c >= 'a' && c <= 'f'));
 }
 
-static bool	conv_hex(uint8_t *pt_base, uint8_t *pt, int state, char c)
+static uint64_t			do_conv(char *str, size_t str_len)
 {
-	if (!is_hex(c))
+	uint64_t	i;
+	uint64_t	ret;
+
+	i = 0;
+	ret = 0;
+	while (i < str_len || i < 16)
 	{
-		free(pt_base);
-		return (false);
+		if (is_hex(str[i]) == false)
+		{
+			write(2, "Hex string is invalid\n", 22);
+			exit(1);
+		}
+		ret = (ret << 4) | get_hex(str[i]);
+		i++;
 	}
-	*pt |= get_hex(c) << (state * 4);
-	return (true);
+	return (ret);
 }
 
-uint8_t		*ft_char_to_hex(char *str, size_t *out_size)
-{
-	uint8_t			*pt[2];
-	size_t			len;
-	int				state;
+/*
+** Converts chars from str (max 16, as 1 char = 4 bits),
+** assuming hex representation (no 0x at the beginning)
+** pad the end with 0 if the string is too short
+** ignore excess if the string is too long
+*/
 
-	len = ft_strlen(str);
-	*out_size = len / 2 + len % 2;
-	if ((pt[0] = (uint8_t *)ft_memalloc(*out_size)) == NULL)
-		return (NULL);
-	ft_strtoupper(str);
-	pt[1] = pt[0] + (*out_size) - 1;
-	state = 0;
-	while (len > 0)
-	{
-		if (conv_hex(pt[0], pt[1], state, str[len - 1]) == false)
-			return (NULL);
-		if (state == 1)
-			pt[1]--;
-		state = !state;
-		len--;
-	}
-	return (pt[0]);
+uint64_t		ft_char_to_hex_u64(char *str)
+{
+	const size_t len = ft_strlen(str);
+
+	if (len < 16)
+		write(2, "hex string is too short, padding with zeroes\n", 45);
+	else if (len > 16)
+		write(2, "hex string is too long, ignoring excess", 39);
+	return (do_conv(str, len));
 }
