@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:10:08 by eduwer            #+#    #+#             */
-/*   Updated: 2021/01/08 04:50:28 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/01/09 01:19:53 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 
 static inline uint64_t	get_hex(char c)
 {
@@ -24,8 +23,6 @@ static inline uint64_t	get_hex(char c)
 		return (c - 'A' + 10);
 	return (c - 'a' + 10);
 }
-
-
 
 static uint64_t			do_conv(char *str, size_t str_len)
 {
@@ -55,7 +52,7 @@ static uint64_t			do_conv(char *str, size_t str_len)
 ** ignore excess if the string is too long
 */
 
-uint64_t		ft_char_to_hex_u64(char *str)
+uint64_t				ft_char_to_hex_u64(char *str)
 {
 	const size_t len = ft_strlen(str);
 
