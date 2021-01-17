@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 14:10:08 by eduwer            #+#    #+#             */
-/*   Updated: 2021/01/09 01:19:53 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/01/15 17:48:13 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static uint64_t			do_conv(char *str, size_t str_len)
 		ret = (ret << 4) | get_hex(str[i]);
 		i++;
 	}
+	ret = ret << (4 * (16 - i));
 	return (ret);
 }
 
