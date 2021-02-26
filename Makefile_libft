@@ -6,7 +6,7 @@
 #    By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 18:54:25 by eduwer            #+#    #+#              #
-#    Updated: 2021/01/01 23:44:47 by eduwer           ###   ########.fr        #
+#    Updated: 2021/02/26 16:15:27 by eduwer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS = ft_atoi.c \
 	ft_itoa.c \
 	ft_strsplit.c \
 	ft_putchar.c \
+	ft_legacy_putchar.c \
 	ft_putstr.c \
 	ft_putendl.c \
 	ft_putnbr.c \
