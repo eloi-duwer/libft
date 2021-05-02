@@ -31,9 +31,9 @@ SRC_NAME = append_string.c \
 
 NAME = libft.a
 
-CC = gcc
+CC = clang
 
-CFLAGS = -I./include -I./libft/include -Wall -Wextra -Werror
+CFLAGS = -I./include -I./libft/include -Wall -Wextra -Werror -g
 
 SRCF = ./srcs/ft_printf/
 

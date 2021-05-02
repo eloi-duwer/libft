@@ -14,7 +14,7 @@
 
 static int		ft_verif(char *big, char *little, size_t len)
 {
-	while (*little != '\0' && len != 0)
+	while (len != 0  && *little != '\0')
 	{
 		if (*big != *little)
 			return (0);
@@ -36,14 +36,14 @@ char			*ft_strnstr(const char *big, const char *little, size_t len)
 	pt_little = (char *)little;
 	if (*pt_little == '\0')
 		return (pt_big);
-	while (*pt_big != '\0' && len > 0)
+	while (len > 0 && *pt_big != '\0')
 	{
-		while (*pt_big != *pt_little && *pt_big != '\0' && len > 0)
+		while (len > 0 && *pt_big != *pt_little && *pt_big != '\0')
 		{
 			len--;
 			pt_big++;
 		}
-		if (*pt_big == '\0' || len == 0)
+		if (len == 0 || *pt_big == '\0')
 			return (NULL);
 		if (ft_verif(pt_big, pt_little, len) == 1)
 			return (pt_big);
