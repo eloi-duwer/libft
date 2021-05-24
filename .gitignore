@@ -1,4 +1,5 @@
-obj/**/*.o
+obj/
 libft.a
+libft_noprintf.a
 test/main
 test/.gdb_history

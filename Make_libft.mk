@@ -1,16 +1,16 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile_libft                                     :+:      :+:    :+:    #
+#    Make_libft.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 18:54:25 by eduwer            #+#    #+#              #
-#    Updated: 2021/02/26 16:15:27 by eduwer           ###   ########.fr        #
+#    Updated: 2021/05/24 16:51:44 by eduwer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_atoi.c \
+SRC_NAME = ft_atoi.c \
 	ft_bzero.c \
 	ft_char_to_hex.c \
 	ft_isalnum.c \
@@ -83,7 +83,7 @@ SRCS = ft_atoi.c \
 	read_whole_file.c \
 	ft_free_string_list.c
 
-NAME = libft.a
+NAME = libft_noprintf.a
 
 CC = clang
 
@@ -93,7 +93,9 @@ SRCF = ./srcs/libft/
 
 OBJF = ./obj/libft/
 
-OBJS = $(addprefix $(OBJF), $(SRCS:.c=.o))
+OBJS = $(addprefix $(OBJF), $(SRC_NAME:.c=.o))
+
+DEPS = $(OBJS:%.o=%.d)
 
 all : $(NAME)
 
@@ -101,9 +103,11 @@ $(NAME) : $(OBJS)
 	ar -rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-$(OBJS) :
+-include $(DEPS)
+
+$(OBJF)%.o: $(SRCF)%.c
 	@mkdir -p $(@D)
-	$(CC) -o $@ $(CFLAGS) -c $(addprefix $(SRCF), $(@F:.o=.c))
+	$(CC) -o $@ $(CFLAGS) -MMD -c $(addprefix $(SRCF), $*.c)
 
 clean :
 	rm -rf $(OBJS)

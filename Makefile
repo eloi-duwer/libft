@@ -41,23 +41,34 @@ OBJF = ./obj/ft_printf/
 
 OBJS = $(addprefix $(OBJF), $(SRC_NAME:.c=.o))
 
-all : $(NAME)
+DEPS = $(OBJS:%.o=%.d)
 
-$(NAME) : $(OBJS)
-	make -f ./Makefile_libft
+LFT = ./libft_noprintf.a
+
+all : compile 
+
+$(NAME) : $(LFT) $(OBJS)
+	@$(MAKE) -f ./Make_libft.mk
+	cp $(LFT) $(NAME)
 	ar -rc libft.a $(OBJS)
 	ranlib libft.a
 
+-include $(DEPS)
+
 $(OBJF)%.o : $(SRCF)%.c
 	@mkdir -p $(@D)
-	$(CC) -o $@ $(CFLAGS) -c $(addprefix $(SRCF), $*.c)
+	$(CC) -o $@ $(CFLAGS) -MMD -c $(addprefix $(SRCF), $*.c)
 
 clean :
 	rm -rf	$(OBJS)
-	make -f ./Makefile_libft clean
+	make -f ./Make_libft.mk clean
 
 fclean : clean
 	rm -rf $(NAME)
-	make -f ./Makefile_libft fclean
+	make -f ./Make_libft.mk fclean
 
 re : fclean all
+
+compile:
+	$(MAKE) -f ./Make_libft.mk
+	$(MAKE) $(NAME)
