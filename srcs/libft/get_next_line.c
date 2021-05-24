@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 14:49:01 by eduwer            #+#    #+#             */
-/*   Updated: 2021/05/24 16:53:52 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/05/24 17:48:46 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int				ft_check(int ret, char **line)
 
 int				get_next_line(const int fd, char **line)
 {
-	static char stat_buff[BUFF_SIZE] = {'\0'};
+	static char stat_buff[BUFF_SIZE + 1] = {'\0'};
 	static char *cursor = NULL;
 	int			ret;
 

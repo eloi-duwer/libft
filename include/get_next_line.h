@@ -6,13 +6,13 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 12:10:37 by eduwer            #+#    #+#             */
-/*   Updated: 2021/05/24 16:44:13 by eduwer           ###   ########.fr       */
+/*   Updated: 2021/05/24 17:31:37 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 50000
+# define BUFF_SIZE 3000
 
 int		get_next_line(const int fd, char **line);
 int		remalloc_the_line(char **line, int size);
