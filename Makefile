@@ -33,7 +33,7 @@ NAME = libft.a
 
 CC = clang
 
-CFLAGS = -I./include -I./libft/include -Wall -Wextra -Werror -g
+CFLAGS = -I./include -I./libft/include -Wall -Wextra -Werror -g -O3
 
 SRCF = ./srcs/ft_printf/
 

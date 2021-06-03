@@ -6,7 +6,7 @@
 #    By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 18:54:25 by eduwer            #+#    #+#              #
-#    Updated: 2021/05/24 16:51:44 by eduwer           ###   ########.fr        #
+#    Updated: 2021/06/04 01:19:06 by eduwer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ NAME = libft_noprintf.a
 
 CC = clang
 
-CFLAGS = -g -Wall -Wextra -Werror -I./include
+CFLAGS = -g -Wall -Wextra -Werror -I./include -O3
 
 SRCF = ./srcs/libft/
 
